@@ -31,7 +31,7 @@ segment_df = pd.DataFrame(
     'start_time': pd.Series(dtype='float'),
     'end_time': pd.Series(dtype='float'),
     'content': pd.Series(dtype='str'),
-    # 'embedding': np.ndarray,
+    'embedding': list,
     'podcast_id': pd.Series(dtype='str')},
 )
 
@@ -69,7 +69,7 @@ for embedding_file, doc_file in embedding_docs_tuples:
             'end_time': segment_end_time,
             'content': segment_content,
             'podcast_id': podcast_id,
-            # 'embedding': segment_embedding
+            'embedding': segment_embedding
         })
 
         # save data representing a row in the podcast table if it is not already present
