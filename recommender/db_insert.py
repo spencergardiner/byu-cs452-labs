@@ -88,22 +88,26 @@ for embedding_file, doc_file in embedding_docs_tuples:
 
 # prep to insert into postgres
 load_dotenv()  # need to run this to connect to the database
+
+# print the amount of memory used by the dataframes
+print(f"Segment DataFrame Memory Usage: {segment_df.memory_usage().sum() / 1e6} MB")
+print(f"Podcast DataFrame Memory Usage: {podcast_df.memory_usage().sum() / 1e6} MB")
 connection = os.getenv("CONNECTION_STRING")
 
 # insert data into postgres
-fast_pg_insert(
-    df=podcast_df,
-    connection=connection,
-    table_name='podcast',
-    columns=list(podcast_df.columns)
-)
-
-fast_pg_insert(
-    df=segment_df,
-    connection=connection,
-    table_name='podcast_segment',
-    columns=list(segment_df.columns)
-)
+# fast_pg_insert(
+#     df=podcast_df,
+#     connection=connection,
+#     table_name='podcast',
+#     columns=list(podcast_df.columns)
+# )
+#
+# fast_pg_insert(
+#     df=segment_df,
+#     connection=connection,
+#     table_name='podcast_segment',
+#     columns=list(segment_df.columns)
+# )
 
 
 # TODO: Read documents files

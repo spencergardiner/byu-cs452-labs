@@ -60,7 +60,7 @@ SELECT (
     SELECT title FROM podcast WHERE id = podcast_id
     ) as podcast_title,
     l2_distance(AVG(embedding), (
-            SELECT AVG(embedding) from podcast_segment WHERE podcast_id = ' VeH7qKZr0WI'
+            SELECT AVG(embedding) from podcast_segment WHERE podcast_id = 'VeH7qKZr0WI'
         )
     ) AS distance
     FROM podcast_segment
@@ -92,26 +92,26 @@ def execute_query(query: str) -> list[str]:
 
 
 if __name__ == "__main__":
-    print('Query 1:', QUERY_1)
-    execute_query(QUERY_1)
-
-    print("\nQuery 2:", QUERY_2)
-    execute_query(QUERY_2)
-
-    print("\nQuery 3:", QUERY_3)
-    execute_query(QUERY_3)
-
-    print("\nQuery 4:", QUERY_4)
-    execute_query(QUERY_4)
-
-    print("\nQuery 5A:", QUERY_5A)
-    execute_query(QUERY_5A)
-
-    print("\nQuery 5B:", QUERY_5B)
-    execute_query(QUERY_5B)
-
-    print("\nQuery 5C:", QUERY_5C)
-    execute_query(QUERY_5C)
+    # print('Query 1:', QUERY_1)
+    # execute_query(QUERY_1)
+    #
+    # print("\nQuery 2:", QUERY_2)
+    # execute_query(QUERY_2)
+    #
+    # print("\nQuery 3:", QUERY_3)
+    # execute_query(QUERY_3)
+    #
+    # print("\nQuery 4:", QUERY_4)
+    # execute_query(QUERY_4)
+    #
+    # print("\nQuery 5A:", QUERY_5A)
+    # execute_query(QUERY_5A)
+    #
+    # print("\nQuery 5B:", QUERY_5B)
+    # execute_query(QUERY_5B)
+    #
+    # print("\nQuery 5C:", QUERY_5C)
+    # execute_query(QUERY_5C)
 
     print("\nQuery 6:", QUERY_6)
     execute_query(QUERY_6)

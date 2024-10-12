@@ -1,0 +1,151 @@
+Query 1:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+), id, content, start_time, end_time,
+l2_distance(embedding, (
+        SELECT embedding from podcast_segment WHERE id= '267:476'
+    )
+ ) as distance
+FROM podcast_segment
+WHERE id != '267:476'
+ORDER BY distance DESC
+LIMIT 5;
+
+('Podcast: Jason Calacanis: Startups, Angel Investing, Capitalism, and Friendship | Lex Fridman Podcast #161', '119:218', ' a 73 Mustang Grande in gold?', 519.96, 523.8000000000001, 1.6157687685840119)
+('Podcast: Rana el Kaliouby: Emotion AI, Social Robots, and Self-Driving Cars | Lex Fridman Podcast #322', '133:2006', ' for 94 car models.', 5818.62, 5820.82, 1.5863359073014982)
+('Podcast: Travis Stevens: Judo, Olympics, and Mental Toughness | Lex Fridman Podcast #223', '283:1488', ' when I called down to get the sauna.', 3709.34, 3711.1000000000004, 1.572552805197421)
+('Podcast: Jeremy Howard: fast.ai Deep Learning Courses and Research | Lex Fridman Podcast #35', '241:1436', ' which has all the courses pre-installed.', 4068.9, 4071.1400000000003, 1.5663319710412156)
+('Podcast: Joscha Bach: Nature of Reality, Dreams, and Consciousness | Lex Fridman Podcast #212', '307:3933', ' and very few are first class and some are budget.', 10648.64, 10650.960000000001, 1.5616341289820461)
+
+Query 2:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+), id, content, start_time, end_time,
+l2_distance(embedding, (
+        SELECT embedding from podcast_segment WHERE id= '267:476'
+    )
+ ) as distance
+FROM podcast_segment
+WHERE id != '267:476'
+ORDER BY distance ASC
+LIMIT 5;
+
+('Podcast: Ryan Graves: UFOs, Fighter Jets, and Aliens | Lex Fridman Podcast #308', '113:2792', ' encounters, human beings, if we were to meet another alien', 6725.62, 6729.86, 0.6483450674336982)
+('Podcast: Richard Dawkins: Evolution, Intelligence, Simulation, and Memes | Lex Fridman Podcast #87', '268:1019', ' Suppose we did meet an alien from outer space', 2900.04, 2903.0800000000004, 0.6558106859320757)
+('Podcast: Jeffrey Shainline: Neuromorphic Computing and Optoelectronic Intelligence | Lex Fridman Podcast #225', '305:3600', ' but if we think of alien civilizations out there', 9479.960000000001, 9484.04, 0.6595433115268592)
+('Podcast: Michio Kaku: Future of Humans, Aliens, Space Travel & Physics | Lex Fridman Podcast #45', '18:464', ' So I think when we meet alien life from outer space,', 1316.8600000000001, 1319.5800000000002, 0.6662026419636159)
+('Podcast: Alien Debate: Sara Walker and Lee Cronin | Lex Fridman Podcast #279', '71:989', ' because if aliens come to us', 2342.34, 2343.6200000000003, 0.6742942635162208)
+
+Query 3:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+), id, content, start_time, end_time,
+l2_distance(embedding, (
+        SELECT embedding from podcast_segment WHERE id= '48:511'
+    )
+ ) as distance
+FROM podcast_segment
+WHERE id != '48:511'
+ORDER BY distance DESC
+LIMIT 5;
+
+('Podcast: Ryan Graves: UFOs, Fighter Jets, and Aliens | Lex Fridman Podcast #308', '113:1442', ' The weather is so bad that the landing civil officer', 3404.0, 3406.64, 1.6140616609879535)
+('Podcast: Michael Malice and Yaron Brook: Ayn Rand, Human Nature, and Anarchy | Lex Fridman Podcast #178', '145:4055', " auctions, it's a great way to line their pockets.", 11671.16, 11674.32, 1.6080241042745531)
+('Podcast: Steve Viscelli: Trucking and the Decline of the American Dream | Lex Fridman Podcast #237', '212:1098', ' and then out for local delivery.', 3046.06, 3048.02, 1.6064941398829538)
+('Podcast: Steve Viscelli: Trucking and the Decline of the American Dream | Lex Fridman Podcast #237', '212:1044', ' offer their services out to other customers.', 2908.7400000000002, 2911.2200000000003, 1.6034823192338927)
+('Podcast: Martin Rees: Black Holes, Alien Life, Dark Matter, and the Big Bang | Lex Fridman Podcast #305', '79:126', ' of miles of the Southern Ocean and comes back and then coughs up food for its young.', 549.1999999999999, 553.1999999999999, 1.5966550492651799)
+
+Query 4:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+), id, content, start_time, end_time,
+l2_distance(embedding, (
+        SELECT embedding from podcast_segment WHERE id= '51:56'
+    )
+ ) as distance
+FROM podcast_segment
+WHERE id != '51:56'
+ORDER BY distance ASC
+LIMIT 5;
+
+('Podcast: George Hotz: Hacking the Simulation & Learning to Drive with Neural Nets | Lex Fridman Podcast #132', '308:144', " I mean, we don't understand dark energy, right?", 500.44, 502.6, 0.6681965222094363)
+('Podcast: Lex Fridman: Ask Me Anything - AMA January 2021 | Lex Fridman Podcast', '243:273', " Like, what's up with this dark matter and dark energy stuff?", 946.22, 950.12, 0.7355511762966292)
+('Podcast: Katherine de Kleer: Planets, Moons, Asteroids & Life in Our Solar System | Lex Fridman Podcast #184', '196:685', ' being like, what the hell is dark matter and dark energy?', 2591.72, 2595.9599999999996, 0.7631141596843518)
+('Podcast: Alex Filippenko: Supernovae, Dark Energy, Aliens & the Expanding Universe | Lex Fridman Podcast #137', '51:36', ' Do we have any understanding of what the heck that thing is?', 216.0, 219.0, 0.7922019445543276)
+('Podcast: Leonard Susskind: Quantum Mechanics, String Theory and Black Holes | Lex Fridman Podcast #41', '122:831', ' That is a big question in physics right now.', 2374.9, 2377.6200000000003, 0.8022704628640559)
+
+Query 5A:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+    ) as podcast_title,
+    l2_distance(AVG(embedding), (
+            SELECT embedding from podcast_segment WHERE id= '267:476'
+        )
+    ) AS distance
+    FROM podcast_segment
+    GROUP BY podcast_id
+    ORDER BY distance
+    LIMIT 5;
+
+('Podcast: Sara Walker: The Origin of Life on Earth and Alien Worlds | Lex Fridman Podcast #198', 0.7828978136062058)
+('Podcast: Martin Rees: Black Holes, Alien Life, Dark Matter, and the Big Bang | Lex Fridman Podcast #305', 0.7879499391348677)
+('Podcast: Max Tegmark: Life 3.0 | Lex Fridman Podcast #1', 0.7886899314049058)
+('Podcast: Sean Carroll: The Nature of the Universe, Life, and Intelligence | Lex Fridman Podcast #26', 0.7890653704600481)
+('Podcast: Nick Bostrom: Simulation and Superintelligence | Lex Fridman Podcast #83', 0.7911210354871258)
+
+Query 5B:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+    ) as podcast_title,
+    l2_distance(AVG(embedding), (
+            SELECT embedding from podcast_segment WHERE id= '48:511'
+        )
+    ) AS distance
+    FROM podcast_segment
+    GROUP BY podcast_id
+    ORDER BY distance
+    LIMIT 5;
+
+('Podcast: Matt Botvinick: Neuroscience, Psychology, and AI at DeepMind | Lex Fridman Podcast #106', 0.7481195001232699)
+('Podcast: Christof Koch: Consciousness | Lex Fridman Podcast #2', 0.7537802160985114)
+('Podcast: Dileep George: Brain-Inspired AI | Lex Fridman Podcast #115', 0.7605152893560989)
+('Podcast: Tomaso Poggio: Brains, Minds, and Machines | Lex Fridman Podcast #13', 0.7615547981858913)
+('Podcast: Elon Musk: Neuralink, AI, Autopilot, and the Pale Blue Dot | Lex Fridman Podcast #49', 0.7761520759503151)
+
+Query 5C:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+    ) as podcast_title,
+    l2_distance(AVG(embedding), (
+            SELECT embedding from podcast_segment WHERE id= '51:56'
+        )
+    ) AS distance
+    FROM podcast_segment
+    GROUP BY podcast_id
+    ORDER BY distance
+    LIMIT 5;
+
+('Podcast: Sean Carroll: Quantum Mechanics and the Many-Worlds Interpretation | Lex Fridman Podcast #47', 0.7767144344304333)
+('Podcast: Alex Filippenko: Supernovae, Dark Energy, Aliens & the Expanding Universe | Lex Fridman Podcast #137', 0.8000715134366765)
+('Podcast: Stephen Wolfram: Fundamental Theory of Physics, Life, and the Universe | Lex Fridman Podcast #124', 0.8080714284866961)
+('Podcast: Donald Hoffman: Reality is an Illusion - How Evolution Hid the Truth | Lex Fridman Podcast #293', 0.8165829480979995)
+('Podcast: Cumrun Vafa: String Theory | Lex Fridman Podcast #204', 0.8173474448880219)
+
+Query 6:
+SELECT (
+    SELECT title FROM podcast WHERE id = podcast_id
+    ) as podcast_title,
+    l2_distance(AVG(embedding), (
+            SELECT AVG(embedding) from podcast_segment WHERE podcast_id = 'VeH7qKZr0WI'
+        )
+    ) AS distance
+    FROM podcast_segment
+    GROUP BY podcast_id
+    ORDER BY distance
+    LIMIT 5;
+
+('Podcast: Balaji Srinivasan: How to Fix Government, Twitter, Science, and the FDA | Lex Fridman Podcast #331', 0.0)
+('Podcast: Tyler Cowen: Economic Growth & the Fight Against Conformity & Mediocrity | Lex Fridman Podcast #174', 0.11950103776872197)
+('Podcast: Eric Weinstein: Difficult Conversations, Freedom of Speech, and Physics | Lex Fridman Podcast #163', 0.1257139025632404)
+('Podcast: Michael Malice and Yaron Brook: Ayn Rand, Human Nature, and Anarchy | Lex Fridman Podcast #178', 0.12842690324343972)
+('Podcast: Steve Keen: Marxism, Capitalism, and Economics | Lex Fridman Podcast #303', 0.12916269225753493)
